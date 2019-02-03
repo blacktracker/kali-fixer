@@ -61,6 +61,26 @@ echo "Setting up Persistent-IP-tables"
 sleep 1
 apt-get install iptables-persistent -y
 
+#Install PMKID attack dependencies
+sudo apt install libcurl4-openssl-dev libpcap0.8-dev zlib1g-dev libssl-dev
+sudo git clone https://github.com/ZerBea/hcxdumptool.git
+sudo git clone https://github.com/ZerBea/hcxtools.git
+sudo git clone https://github.com/hashcat/hashcat.git
+
+#Install Tools
+cd hcxdumptool/
+sudo make
+sudo make install
+cd ..
+cd hcxtools/
+sudo make
+sudo make install
+cd ..
+cd hashcat/
+sudo make
+sudo make install
+cd ..
+
 #Install wifi drivers for AC1900
 echo "Do you want to install AC1900 drivers? "
 read -p "yes or no: " driver
