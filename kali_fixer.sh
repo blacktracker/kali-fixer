@@ -21,7 +21,7 @@ apt-get update && apt-get upgrade && apt-get dist-upgrade -y
 sleep 5
 clear
 
-#sound on boot
+#sound on virtualbox sharing and screen
 echo "Fixing virtualbox sharing and screen"
 sleep 1
 apt-get install virtualbox-guest-x11 -y
@@ -60,6 +60,15 @@ apt-get install gdebi -y
 echo "Setting up Persistent-IP-tables"
 sleep 1
 apt-get install iptables-persistent -y
+
+#Install wifi drivers for AC1900
+echo "Do you want to install AC1900 drivers? "
+read -p "yes or no: " choice
+case "$choice" in 
+  y|Y|yes ) echo "yes"; apt-get install dkms; apt-get install bc; apt-get install build-essential; apt-get install linux-headers-$(uname -r); sudo git clone https://github.com/aircrack-ng/rtl8812au.git; cd rtl8812au/; sudo bash dkms-install.sh; cd ..; return;; 
+  n|N|no ) echo "no";;
+  * ) echo "Quitting script."; exit;;
+esac
 
 #change root password
 echo "Do you want to change root password? "
