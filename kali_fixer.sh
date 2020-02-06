@@ -9,8 +9,8 @@ sleep 2
 echo "Fixing repos"
 sleep 1
 echo '##Rolling' > /etc/apt/sources.list
-echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
-echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
+echo 'deb https://http.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
+echo 'deb-src https://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 echo /etc/init.d/networking restart
 clear
 
